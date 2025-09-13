@@ -7,9 +7,10 @@
     "node": "22.x"
   },
   "scripts": {
+    "postinstall": "chmod +x ./node_modules/.bin/tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch 'src/**/*' --ext ts,json --exec tsx src/server.ts",
-    "build": "tsup src/server.ts --format cjs --dts --clean",
+    "build": "npx tsup src/server.ts --format cjs --dts --clean",
     "start": "node dist/server.js",
     "build:dev": "npm run build && npm run start",
     "watch": "nodemon --watch 'src/**/*' --ext ts,json --exec npm run build:dev",
