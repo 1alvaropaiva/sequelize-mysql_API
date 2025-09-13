@@ -11,7 +11,7 @@ const app = fastify();
 async function setupServer() {
     await app.register(helmet);
     await app.register(cors, {
-        origin: ['http://localhost:8000', 'http://localhost:5173'],
+        origin: "*",
         credentials: true
     });
 }
