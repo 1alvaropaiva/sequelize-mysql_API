@@ -6,8 +6,6 @@ import { Users } from './types/Users';
 const app = fastify();
 
 
-
-
 async function setupServer() {
     await app.register(helmet);
     await app.register(cors, {
@@ -99,9 +97,16 @@ app.delete<{
     }
 });
 
-app.listen({
-    host: '0.0.0.0',
-    port: process.env.PORT ? Number(process.env.PORT) : 8000
-}).then(() => {
-    console.log('server online')
-})
+
+async function main() {
+    await setupServer();
+
+    await app.listen({
+        host: "0.0.0.0",
+        port: process.env.PORT ? Number(process.env.PORT) : 8000
+    });
+
+    console.log("server online");
+}
+
+main();
